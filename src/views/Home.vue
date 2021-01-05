@@ -1,8 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
-    <div>{{ data.mag }} || {{ msg }}</div>
+    <div>{{ msg }}</div>
     <div>1.----{{ num1 }}</div>
     <div>2.-----{{ data.num2 }}</div>
     <div>sum:{{ sum }}</div>
@@ -16,6 +14,7 @@ import {
   ComputedRef,
   defineComponent,
   nextTick,
+  onBeforeUpdate,
   onMounted,
   onUnmounted,
   onUpdated,
@@ -24,7 +23,6 @@ import {
   ref,
   watch,
 } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 
 interface DataProps {
   num2: number;
@@ -32,9 +30,7 @@ interface DataProps {
 
 export default defineComponent({
   name: 'Home',
-  components: {
-    HelloWorld,
-  },
+  components: {},
   setup() {
     // const data = reactive({
     //   mag: 'I`m OK',
@@ -71,14 +67,17 @@ export default defineComponent({
     onMounted(() => {
       console.log('mounted');
     });
+
     nextTick(() => {
       console.log('nextTick');
     });
+
     onUpdated(() => {
       console.log('updated');
     });
+
     onUnmounted(() => {
-      console.log('Unmounted');
+      console.log('unmounted');
     });
 
     return {
